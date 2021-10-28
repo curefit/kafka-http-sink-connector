@@ -95,13 +95,31 @@ public class ApiRequest implements Request{
             writer.flush();
             writer.close();
             log.info("Submitted request: url={} payload={}",connection.getURL(), payload);
-            processResponse();
+            processResponse_New();
         }catch (ApiResponseErrorException e) {
             throw e;
         }catch (Exception e) {
             throw new ApiRequestErrorException(e.getLocalizedMessage(), kafkaRecord);
         } finally {
             connection.disconnect();
+        }
+    }
+
+    private void processResponse_New() {
+        try {
+            int statusCode = connection.getResponseCode();
+            System.out.println(connection.getResponseCode());
+            log.info("Response Status: {}", statusCode);
+            if(statusCode >= 200 && statusCode <400) {
+                RetryIndicator retryIndicator = RetryIndicator.NO_RETRY;
+                log.info("Successfully Processed!");
+            } else {
+                throw new ApiResponseErrorException("Received response retry=true", kafkaRecord);
+            }
+
+        } catch (IOException e) {
+            log.warn("Error checking if Send Request was Successful.",e.getMessage());
+            throw new ApiResponseErrorException(e.getLocalizedMessage());
         }
     }
 

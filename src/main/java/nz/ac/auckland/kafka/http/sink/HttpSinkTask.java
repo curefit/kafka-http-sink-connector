@@ -13,6 +13,8 @@ import org.slf4j.MDC;
 import java.util.Collection;
 import java.util.Map;
 
+import static java.lang.System.currentTimeMillis;
+
 public class HttpSinkTask extends SinkTask {
   private static final Logger log = LoggerFactory.getLogger(HttpSinkTask.class);
 

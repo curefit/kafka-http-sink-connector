@@ -70,6 +70,11 @@ public class HttpSinkConnectorConfig extends AbstractConfig {
 
   private static final String RETRY_BACKOFF_SEC_SEPARATOR = ",";
 
+  /*private static final String SINK_INTERVAL = "sink.interval.ms";
+  private static final String SINK_INTERVAL_DOC = "How often to put in the destination URL.";
+  private static final String SINK_INTERVAL_DISPLAY = "Sink interval";
+  private static final Long SINK_INTERVAL_DEFAULT = 300000L;*/
+
   public final String httpApiUrl;
   public final RequestMethod requestMethod;
   public final int connectTimeout;

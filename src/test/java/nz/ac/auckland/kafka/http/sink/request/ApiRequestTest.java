@@ -184,7 +184,7 @@ class ApiRequestTest {
         when(connection.getInputStream()).thenReturn(new ByteArrayInputStream(response.getBytes(Charset.forName("UTF-8"))));
 
         ApiRequest apiRequest = new ApiRequest(connection,kafkaRecord);
-
+        doReturn(200).when(connection).getResponseCode();
         Assertions.assertDoesNotThrow (() -> apiRequest.sendPayload("test"));
 
     }
@@ -199,7 +199,7 @@ class ApiRequestTest {
         when(connection.getInputStream()).thenReturn(new ByteArrayInputStream(response.getBytes(Charset.forName("UTF-8"))));
 
         ApiRequest apiRequest = new ApiRequest(connection,kafkaRecord);
-
+        doReturn(200).when(connection).getResponseCode();
         Assertions.assertDoesNotThrow (() -> apiRequest.sendPayload("test"));
 
     }
