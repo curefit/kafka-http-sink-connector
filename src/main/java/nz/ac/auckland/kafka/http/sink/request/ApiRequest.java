@@ -108,7 +108,6 @@ public class ApiRequest implements Request{
     private void processResponse_New() {
         try {
             int statusCode = connection.getResponseCode();
-            System.out.println(connection.getResponseCode());
             log.info("Response Status: {}", statusCode);
             if(statusCode >= 200 && statusCode <400) {
                 RetryIndicator retryIndicator = RetryIndicator.NO_RETRY;
