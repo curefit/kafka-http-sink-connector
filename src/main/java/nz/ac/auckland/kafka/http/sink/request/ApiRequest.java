@@ -94,7 +94,7 @@ public class ApiRequest implements Request{
             writer.write(payload);
             writer.flush();
             writer.close();
-            log.info("Submitted request: url={} payload={}",connection.getURL(), payload);
+//            log.info("Submitted request: url={} payload={}",connection.getURL(), payload);
             processResponse_New();
         }catch (ApiResponseErrorException e) {
             throw e;
